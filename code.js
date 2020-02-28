@@ -7,13 +7,24 @@ let gridSizeX = 16;
 let gridSizeY = 16;
 for(i = 0; i < gridSizeY; i++){ //Build from the bottom left column up 1,1 being in bottom left corner
     for(j = 0; j < gridSizeX; j++){ //Build from left to right
+
+/*         let randomColorHex = `#${Math.floor((Math.random()*(16777215 - 1048576)) + 1048576).toString(16)}`; //generates a number that satisfies hex color codes "big enough for 6 hex digits" */
+
+        let randomColorHex = `${Math.floor((Math.random()*(16777215))).toString(16)}`; //another hex generatot than olnly misses black
+        if(randomColorHex.length < 6){
+           randomColorHex = `0`.repeat(6 - randomColorHex.length) + randomColorHex;
+        }
+        randomColorHex = `#` + randomColorHex;
+
+        /* let randomColorHex = `#${(Math.floor((Math.random()*(16777215)))).toLocaleString(`en-US`, {minimumIntegerDigits:6, useGrouping: false}).toString(16)}`; //some attempt to make hex color codes */ 
+              
         let posX = j + 1;
         let posY = i + 1;
         let gridSquare = document.createElement(`div`);
         gridSquare.id = `pos${posX},${posY}`;
-        gridSquare.style.display
+        gridSquare.textContent = randomColorHex;
         gridSquare.style.gridArea = `pos${posX},${posY}`;
-        gridSquare.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16); //makes a random hex color
+        gridSquare.style.backgroundColor = randomColorHex; //makes a random hex color
         // gridSquare.style.width = `2px`;
         // gridSquare.style.height = `2px`;
         gridSquare.style.placeSelf = `stretch`;
