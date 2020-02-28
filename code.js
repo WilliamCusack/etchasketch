@@ -21,9 +21,10 @@ for(i = 0; i < gridSizeY; i++){ //Build from the bottom left column up 1,1 being
         let posX = j + 1;
         let posY = i + 1;
         let gridSquare = document.createElement(`div`);
-        gridSquare.id = `pos${posX},${posY}`;
+        gridSquare.id = `pos${posX}-${posY}`;
         gridSquare.textContent = randomColorHex;
-        gridSquare.style.gridArea = `pos${posX},${posY}`;
+        let generatedGridArea = `pos${posX}-${posY}`;
+        gridSquare.style.gridArea = generatedGridArea;
         gridSquare.style.backgroundColor = randomColorHex; //makes a random hex color
         // gridSquare.style.width = `2px`;
         // gridSquare.style.height = `2px`;
@@ -42,7 +43,7 @@ for(i = 0; i < gridSizeY; i++){ //Build from the bottom left column up 1,1 being
     for(j = 0; j < gridSizeX; j++){ //Build from left to right
         let posX = j + 1;
         let posY = i + 1;
-        generatedGridTemplateAreasTemp += `pos${posX},${posY} `;
+        generatedGridTemplateAreasTemp += `pos${posX}-${posY} `;
         
     }
     generatedGridTemplateAreasTemp += `"\n`
